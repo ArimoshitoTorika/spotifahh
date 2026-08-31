@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spotifahh/style/myColor.dart';
 import 'package:spotifahh/style/textStyle.dart';
 import 'package:spotifahh/widgets/homeScreen/recentPlaylist.dart';
+import 'package:spotifahh/widgets/homeScreen/remmendedStationCard.dart';
 import 'package:spotifahh/widgets/homeScreen/tabs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -95,25 +96,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             SizedBox(
-              height: 270,
-              child: Expanded(
-                child: GridView.builder(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  itemCount: 8,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                    childAspectRatio: 3.4,
-                  ),
-                  itemBuilder: (context, index) {
-                    return RecentPlaylistHome(
-                      imgPath: recentPlaylistList[index].image,
-                      name: recentPlaylistList[index].name,
-                    );
-                  },
+              child: GridView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(vertical: 16),
+                itemCount: 8,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 3.4,
                 ),
+                itemBuilder: (context, index) {
+                  return RecentPlaylistHome(
+                    imgPath: recentPlaylistList[index].image,
+                    name: recentPlaylistList[index].name,
+                  );
+                },
               ),
             ),
             Padding(
@@ -123,128 +122,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: MyTextStyleLib.contentTitle,
               ),
             ),
-            Column(
-              children: [
-                SizedBox(
-                  width: 160,
-                  height: 160,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.purple,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text('1'), Text('2')],
-                        ),
-                        SizedBox(
-                          height: 90,
-                          child: Expanded(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 18,
-                                    child: Container(
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.purple,
-                                        ),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          9999,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/MusicAlbumCovers/1.jpeg',
-                                          width: 90,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    right: 0,
-                                    top: 18,
-                                    child: Container(
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.purple,
-                                        ),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          9999,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/MusicAlbumCovers/2.jpeg',
-                                          width: 90,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      width: 90,
-                                      height: 90,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.purple,
-                                          width: 3,
-                                        ),
-                                        borderRadius: BorderRadius.circular(
-                                          999,
-                                        ),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          9999,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/MusicAlbumCovers/3.jpeg',
-                                          width: 90,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 14),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            'Daily Mix',
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              width: 160,
-              child: Text(
-                'Laufey, Lana Del Rey, Billie Eilish',
-                style: TextStyle(color: Colors.white),
-              ),
+            RecommendedStationsCard(
+              cardTitle: 'Mixie',
+              leftAlbum: 'assets/images/MusicAlbumCovers/1.jpeg',
+              centerAlbum: 'assets/images/MusicAlbumCovers/1.jpeg',
+              rightAlbum: 'assets/images/MusicAlbumCovers/1.jpeg',
+              artistNames: '',
             ),
           ],
         ),
