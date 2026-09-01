@@ -7,7 +7,17 @@ class RecommendedStationsCard extends StatefulWidget {
   final String rightAlbum;
   final String artistNames;
   final Color cardBgColor;
-  const RecommendedStationsCard({super.key, required this.cardTitle, required this.leftAlbum, required this.centerAlbum, required this.rightAlbum, required this.artistNames, required this.cardBgColor});
+
+  const RecommendedStationsCard({
+    super.key,
+    required this.cardTitle,
+    required this.leftAlbum,
+    required this.centerAlbum,
+    required this.rightAlbum,
+    required this.artistNames,
+    required this.cardBgColor,
+  });
+
   @override
   State<RecommendedStationsCard> createState() =>
       _RecommendedStationsCardState();
@@ -33,13 +43,24 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 5.0, left: 5, right: 5),
+                        top: 5.0,
+                        left: 5,
+                        right: 5,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Image.asset('assets/images/spotify_dark.png',
-                        width: 16,),
-                      Text(
-                        'RADIO', style: TextStyle(fontWeight: FontWeight.w800,fontSize: 12))
+                        children: [
+                          Image.asset(
+                            'assets/images/spotify_dark.png',
+                            width: 16,
+                          ),
+                          Text(
+                            'RADIO',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 12,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -53,13 +74,8 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
                             child: SizedBox(
                               width: 60,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                  9999,
-                                ),
-                                child: Image.asset(
-                                  widget.leftAlbum,
-                                  width: 90,
-                                ),
+                                borderRadius: BorderRadius.circular(9999),
+                                child: Image.asset(widget.leftAlbum, width: 90),
                               ),
                             ),
                           ),
@@ -69,9 +85,7 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
                             child: SizedBox(
                               width: 60,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                  9999,
-                                ),
+                                borderRadius: BorderRadius.circular(9999),
                                 child: Image.asset(
                                   widget.rightAlbum,
                                   width: 90,
@@ -88,14 +102,10 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
                                   color: widget.cardBgColor,
                                   width: 3,
                                 ),
-                                borderRadius: BorderRadius.circular(
-                                  999,
-                                ),
+                                borderRadius: BorderRadius.circular(999),
                               ),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                  9999,
-                                ),
+                                borderRadius: BorderRadius.circular(9999),
                                 child: Image.asset(
                                   widget.centerAlbum,
                                   width: 90,
@@ -124,25 +134,35 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
             ),
           ],
         ),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         SizedBox(
           width: 160,
           child: Text(
             widget.artistNames,
             maxLines: 2,
-            style: TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis,),
+            style: TextStyle(
+              color: Colors.white,
+              overflow: TextOverflow.ellipsis,
+              fontSize: 14,
+              fontWeight: FontWeight.w200,
+            ),
           ),
         ),
       ],
     );
   }
 }
-class RecommendedStationData{
+
+class RecommendedStationData {
   final List<String> albumCovers;
   final String cardName;
   final List<String> artistNames;
   final Color bgColor;
-  RecommendedStationData({required this.albumCovers, required this.cardName, required this.artistNames, required this.bgColor});
+
+  RecommendedStationData({
+    required this.albumCovers,
+    required this.cardName,
+    required this.artistNames,
+    required this.bgColor,
+  });
 }

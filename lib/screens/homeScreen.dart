@@ -4,6 +4,7 @@ import 'package:spotifahh/style/textStyle.dart';
 import 'package:spotifahh/widgets/homeScreen/recentPlaylist.dart';
 import 'package:spotifahh/widgets/homeScreen/remmendedStationCard.dart';
 import 'package:spotifahh/widgets/homeScreen/tabs.dart';
+import 'package:spotifahh/widgets/homeScreen/yourTopMixesCard.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -121,9 +122,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 50),
+          SizedBox(height: 40),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
             child: Row(
               children: [
                 ClipRRect(
@@ -217,6 +218,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                    child: Text(
+                      'Your top mixes',
+                      style: MyTextStyleLib.contentTitle,
+                    ),
+                  ),
+                  YourTopMixesCard(),
                 ],
               ),
             ),
