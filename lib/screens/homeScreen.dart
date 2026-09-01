@@ -115,14 +115,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.none,
       decoration: BoxDecoration(color: MyColorLib.mainBg),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 50),
-            Row(
+      // padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 50),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(9999),
@@ -157,57 +159,69 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(
-              child: GridView.builder(
-                shrinkWrap: true,
-                padding: EdgeInsets.symmetric(vertical: 16),
-                itemCount: 8,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 3.4,
-                ),
-                itemBuilder: (context, index) {
-                  return RecentPlaylistHome(
-                    imgPath: recentPlaylistList[index].image,
-                    name: recentPlaylistList[index].name,
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Text(
-                'Recommended Stations',
-                style: MyTextStyleLib.contentTitle,
-              ),
-            ),
-            SizedBox(
-              height: 220,
-              child: ListView.separated(
-                itemCount: recommendedStationCardData.length,
-                padding: EdgeInsets.all(0),
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) => SizedBox(width: 12),
-                itemBuilder: (context, index) {
-                  final item = recommendedStationCardData[index];
-                  return SizedBox(
-                    child: RecommendedStationsCard(
-                      cardTitle: item.cardName,
-                      leftAlbum: item.albumCovers[0],
-                      centerAlbum: item.albumCovers[1],
-                      rightAlbum: item.albumCovers[2],
-                      artistNames: item.artistNames.join(', '),
-                      cardBgColor: item.bgColor,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.symmetric(vertical: 16,horizontal: 10),
+                      itemCount: 8,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8,
+                        childAspectRatio: 3.4,
+                      ),
+                      itemBuilder: (context, index) {
+                        return RecentPlaylistHome(
+                          imgPath: recentPlaylistList[index].image,
+                          name: recentPlaylistList[index].name,
+                        );
+                      },
                     ),
-                  );
-                },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                    child: Text(
+                      'Recommended Stations',
+                      style: MyTextStyleLib.contentTitle,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 220,
+                    child: ListView.builder(
+                      itemCount: recommendedStationCardData.length,
+                      padding: EdgeInsets.all(0),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final item = recommendedStationCardData[index];
+                        return SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: RecommendedStationsCard(
+                              cardTitle: item.cardName,
+                              leftAlbum: item.albumCovers[0],
+                              centerAlbum: item.albumCovers[1],
+                              rightAlbum: item.albumCovers[2],
+                              artistNames: item.artistNames.join(', '),
+                              cardBgColor: item.bgColor,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
