@@ -6,7 +6,8 @@ class RecommendedStationsCard extends StatefulWidget {
   final String centerAlbum;
   final String rightAlbum;
   final String artistNames;
-  const RecommendedStationsCard({super.key, required this.cardTitle, required this.leftAlbum, required this.centerAlbum, required this.rightAlbum, required this.artistNames});
+  final Color cardBgColor;
+  const RecommendedStationsCard({super.key, required this.cardTitle, required this.leftAlbum, required this.centerAlbum, required this.rightAlbum, required this.artistNames, required this.cardBgColor});
   @override
   State<RecommendedStationsCard> createState() =>
       _RecommendedStationsCardState();
@@ -25,7 +26,7 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.purple,
+                  color: widget.cardBgColor,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,80 +45,65 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
                     ),
                     SizedBox(
                       height: 90,
-                      child: Expanded(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 0,
-                                top: 18,
-                                child: Container(
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.purple,
-                                    ),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                      9999,
-                                    ),
-                                    child: Image.asset(
-                                      widget.leftAlbum,
-                                      width: 90,
-                                    ),
-                                  ),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            left: 0,
+                            top: 18,
+                            child: SizedBox(
+                              width: 60,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  9999,
                                 ),
-                              ),
-                              Positioned(
-                                right: 0,
-                                top: 18,
-                                child: Container(
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.purple,
-                                    ),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                      9999,
-                                    ),
-                                    child: Image.asset(
-                                      widget.rightAlbum,
-                                      width: 90,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: Container(
+                                child: Image.asset(
+                                  widget.leftAlbum,
                                   width: 90,
-                                  height: 90,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.purple,
-                                      width: 3,
-                                    ),
-                                    borderRadius: BorderRadius.circular(
-                                      999,
-                                    ),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                      9999,
-                                    ),
-                                    child: Image.asset(
-                                      widget.centerAlbum,
-                                      width: 90,
-                                    ),
-                                  ),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                          Positioned(
+                            right: 0,
+                            top: 18,
+                            child: SizedBox(
+                              width: 60,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  9999,
+                                ),
+                                child: Image.asset(
+                                  widget.rightAlbum,
+                                  width: 90,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              width: 90,
+                              height: 90,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: widget.cardBgColor,
+                                  width: 3,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  999,
+                                ),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  9999,
+                                ),
+                                child: Image.asset(
+                                  widget.centerAlbum,
+                                  width: 90,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: 14),
@@ -145,7 +131,8 @@ class _RecommendedStationsCardState extends State<RecommendedStationsCard> {
           width: 160,
           child: Text(
             widget.artistNames,
-            style: TextStyle(color: Colors.white),
+            maxLines: 2,
+            style: TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis,),
           ),
         ),
       ],
@@ -156,5 +143,6 @@ class RecommendedStationData{
   final List<String> albumCovers;
   final String cardName;
   final List<String> artistNames;
-  RecommendedStationData({required this.albumCovers, required this.cardName, required this.artistNames});
+  final Color bgColor;
+  RecommendedStationData({required this.albumCovers, required this.cardName, required this.artistNames, required this.bgColor});
 }

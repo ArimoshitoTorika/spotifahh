@@ -49,6 +49,68 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'TV GIRL',
     ),
   ];
+  List<RecommendedStationData> recommendedStationCardData = [
+    RecommendedStationData(
+      albumCovers: [
+        'assets/images/MusicAlbumCovers/1.jpeg',
+        'assets/images/MusicAlbumCovers/2.jpeg',
+        'assets/images/MusicAlbumCovers/3.jpeg',
+      ],
+      cardName: 'Daily Mix',
+      artistNames: [
+        'Laufey',
+        'Billie Eilish',
+        'Lana Del Rey',
+        'Rex Orange County',
+      ],
+      bgColor: Colors.blueAccent,
+    ),
+    RecommendedStationData(
+      albumCovers: [
+        'assets/images/MusicAlbumCovers/4.jpeg',
+        'assets/images/MusicAlbumCovers/5.jpeg',
+        'assets/images/MusicAlbumCovers/6.jpeg',
+      ],
+      cardName: 'Happy Mix',
+      artistNames: [
+        'Laufey',
+        'Billie Eilish',
+        'Lana Del Rey',
+        'Rex Orange County',
+      ],
+      bgColor: Colors.orangeAccent,
+    ),
+    RecommendedStationData(
+      albumCovers: [
+        'assets/images/MusicAlbumCovers/7.jpeg',
+        'assets/images/MusicAlbumCovers/8.jpeg',
+        'assets/images/MusicAlbumCovers/1.jpeg',
+      ],
+      cardName: 'Dejavu',
+      artistNames: [
+        'Laufey',
+        'Billie Eilish',
+        'Lana Del Rey',
+        'Rex Orange County',
+      ],
+      bgColor: Colors.greenAccent,
+    ),
+    RecommendedStationData(
+      albumCovers: [
+        'assets/images/MusicAlbumCovers/2.jpeg',
+        'assets/images/MusicAlbumCovers/3.jpeg',
+        'assets/images/MusicAlbumCovers/4.jpeg',
+      ],
+      cardName: 'Pop Mix',
+      artistNames: [
+        'Laufey',
+        'Billie Eilish',
+        'Lana Del Rey',
+        'Rex Orange County',
+      ],
+      bgColor: Colors.pinkAccent,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +184,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: MyTextStyleLib.contentTitle,
               ),
             ),
-            RecommendedStationsCard(
-              cardTitle: 'Mixie',
-              leftAlbum: 'assets/images/MusicAlbumCovers/1.jpeg',
-              centerAlbum: 'assets/images/MusicAlbumCovers/1.jpeg',
-              rightAlbum: 'assets/images/MusicAlbumCovers/1.jpeg',
-              artistNames: '',
+            SizedBox(
+              height: 220,
+              child: ListView.separated(
+                itemCount: recommendedStationCardData.length,
+                padding: EdgeInsets.all(0),
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (context, index) => SizedBox(width: 12),
+                itemBuilder: (context, index) {
+                  final item = recommendedStationCardData[index];
+                  return SizedBox(
+                    child: RecommendedStationsCard(
+                      cardTitle: item.cardName,
+                      leftAlbum: item.albumCovers[0],
+                      centerAlbum: item.albumCovers[1],
+                      rightAlbum: item.albumCovers[2],
+                      artistNames: item.artistNames.join(', '),
+                      cardBgColor: item.bgColor,
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
