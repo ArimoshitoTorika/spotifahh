@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 class YourTopMixesCard extends StatefulWidget {
-  const YourTopMixesCard({super.key});
+  final String cardName;
+  final String cardTitle;
+  final Color themeColor;
+  final String cardImage;
+
+  const YourTopMixesCard({
+    super.key,
+    required this.cardName,
+    required this.cardTitle,
+    required this.themeColor,
+    required this.cardImage,
+  });
 
   @override
   State<YourTopMixesCard> createState() => _YourTopMixesCardState();
@@ -22,7 +34,7 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                   borderRadius: BorderRadius.circular(10),
                   // color: Colors.blueAccent,
                   image: DecorationImage(
-                    image: AssetImage('assets/images/MusicAlbumCovers/1.jpeg'),
+                    image: AssetImage(widget.cardImage),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -32,7 +44,14 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0, left: 5),
-                      child: SvgPicture.asset('assets/icons/spotify_dark.svg',width: 16,)
+                      child: SvgPicture.asset(
+                        'assets/icons/spotify.svg',
+                        width: 16,
+                        colorFilter: ColorFilter.mode(
+                          widget.themeColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
@@ -42,9 +61,9 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                           Expanded(
                             flex: 5,
                             child: Container(
-                              height: 24,
+                              height: 20,
                               decoration: BoxDecoration(
-                                color: Colors.greenAccent,
+                                color: widget.themeColor,
                               ),
                             ),
                           ),
@@ -54,11 +73,17 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                             child: Container(
                               padding: EdgeInsets.only(left: 5),
                               alignment: Alignment.centerLeft,
-                              height: 24,
+                              height: 20,
                               decoration: BoxDecoration(
-                                color: Colors.greenAccent,
+                                color: widget.themeColor,
                               ),
-                              child: Text('Jazz Mix',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                              child: Text(
+                                widget.cardName,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -74,7 +99,7 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
         SizedBox(
           width: 160,
           child: Text(
-            'Jazz Mix',
+            widget.cardTitle,
             maxLines: 2,
             style: TextStyle(
               color: Colors.white,
@@ -87,4 +112,12 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
       ],
     );
   }
+}
+class YourTopMixesCardData{
+  final List<String> cardTitleList;
+  final String cardName;
+  final String cardImage;
+  final Color cardTheme;
+
+  YourTopMixesCardData({required this.cardTitleList, required this.cardName, required this.cardImage, required this.cardTheme});
 }

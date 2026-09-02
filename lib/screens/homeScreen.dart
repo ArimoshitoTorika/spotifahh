@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotifahh/data/appData.dart';
 import 'package:spotifahh/style/myColor.dart';
 import 'package:spotifahh/style/textStyle.dart';
 import 'package:spotifahh/widgets/homeScreen/recentPlaylist.dart';
@@ -16,102 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> tabsList = ['All', 'Music', 'Podcast'];
   int isClickedTab = 0;
-  List<RecentPlaylist> recentPlaylistList = [
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/1.jpeg',
-      name: 'Bewitched',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/2.jpeg',
-      name: 'HIT ME HARD AND SOFT',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/3.jpeg',
-      name: 'Born to Die',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/4.jpeg',
-      name: 'Submarine',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/5.jpeg',
-      name: 'NEVER ENOUGH',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/6.jpeg',
-      name: 'Pony',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/7.jpeg',
-      name: 'Slay Queen',
-    ),
-    RecentPlaylist(
-      image: 'assets/images/MusicAlbumCovers/8.jpeg',
-      name: 'TV GIRL',
-    ),
-  ];
-  List<RecommendedStationData> recommendedStationCardData = [
-    RecommendedStationData(
-      albumCovers: [
-        'assets/images/MusicAlbumCovers/1.jpeg',
-        'assets/images/MusicAlbumCovers/2.jpeg',
-        'assets/images/MusicAlbumCovers/3.jpeg',
-      ],
-      cardName: 'Daily Mix',
-      artistNames: [
-        'Laufey',
-        'Billie Eilish',
-        'Lana Del Rey',
-        'Rex Orange County',
-      ],
-      bgColor: Colors.blueAccent,
-    ),
-    RecommendedStationData(
-      albumCovers: [
-        'assets/images/MusicAlbumCovers/4.jpeg',
-        'assets/images/MusicAlbumCovers/5.jpeg',
-        'assets/images/MusicAlbumCovers/6.jpeg',
-      ],
-      cardName: 'Happy Mix',
-      artistNames: [
-        'Laufey',
-        'Billie Eilish',
-        'Lana Del Rey',
-        'Rex Orange County',
-      ],
-      bgColor: Colors.orangeAccent,
-    ),
-    RecommendedStationData(
-      albumCovers: [
-        'assets/images/MusicAlbumCovers/7.jpeg',
-        'assets/images/MusicAlbumCovers/8.jpeg',
-        'assets/images/MusicAlbumCovers/1.jpeg',
-      ],
-      cardName: 'Dejavu',
-      artistNames: [
-        'Laufey',
-        'Billie Eilish',
-        'Lana Del Rey',
-        'Rex Orange County',
-      ],
-      bgColor: Colors.greenAccent,
-    ),
-    RecommendedStationData(
-      albumCovers: [
-        'assets/images/MusicAlbumCovers/2.jpeg',
-        'assets/images/MusicAlbumCovers/3.jpeg',
-        'assets/images/MusicAlbumCovers/4.jpeg',
-      ],
-      cardName: 'Pop Mix',
-      artistNames: [
-        'Laufey',
-        'Billie Eilish',
-        'Lana Del Rey',
-        'Rex Orange County',
-      ],
-      bgColor: Colors.pinkAccent,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SizedBox(height: 40),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
             child: Row(
               children: [
                 ClipRRect(
@@ -170,7 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     child: GridView.builder(
                       shrinkWrap: true,
-                      padding: EdgeInsets.symmetric(vertical: 16,horizontal: 10),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 10,
+                      ),
                       itemCount: 8,
                       physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -181,14 +89,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       itemBuilder: (context, index) {
                         return RecentPlaylistHome(
-                          imgPath: recentPlaylistList[index].image,
-                          name: recentPlaylistList[index].name,
+                          imgPath: AppData.recentPlaylistList[index].image,
+                          name: AppData.recentPlaylistList[index].name,
                         );
                       },
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 10,
+                    ),
                     child: Text(
                       'Recommended Stations',
                       style: MyTextStyleLib.contentTitle,
@@ -197,11 +108,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 220,
                     child: ListView.builder(
-                      itemCount: recommendedStationCardData.length,
+                      itemCount: AppData.recommendedStationCardData.length,
                       padding: EdgeInsets.all(0),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        final item = recommendedStationCardData[index];
+                        final item = AppData.recommendedStationCardData[index];
                         return SizedBox(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10),
@@ -219,13 +130,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 10,
+                    ),
                     child: Text(
                       'Your top mixes',
                       style: MyTextStyleLib.contentTitle,
                     ),
                   ),
-                  YourTopMixesCard(),
+                  SizedBox(
+                    height: 220,
+                    child: ListView.builder(
+                      itemCount: AppData.yourTopMixList.length,
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.all(0),
+                      itemBuilder: (context, index) {
+                        final item = AppData.yourTopMixList[index];
+                        return SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: YourTopMixesCard(
+                              cardName: item.cardName,
+                              cardTitle: item.cardTitleList.join(', '),
+                              themeColor: item.cardTheme,
+                              cardImage: item.cardImage,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
