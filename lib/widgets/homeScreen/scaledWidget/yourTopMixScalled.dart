@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotifahh/gen/assets.gen.dart';
 
-class YourTopMixesCard extends StatefulWidget {
-  final String cardName;
-  final String cardTitle;
-  final Color themeColor;
-  final String cardImage;
-
-  const YourTopMixesCard({
-    super.key,
-    required this.cardName,
-    required this.cardTitle,
-    required this.themeColor,
-    required this.cardImage,
-  });
-
+class YourTopMixScaled extends StatefulWidget {
+  const YourTopMixScaled({super.key, required this.cardImage, required this.themeColor, required this.cardName});
+ final String cardImage;
+ final Color themeColor;
+ final String cardName;
   @override
-  State<YourTopMixesCard> createState() => _YourTopMixesCardState();
+  State<YourTopMixScaled> createState() => _YourTopMixScaledState();
 }
 
-class _YourTopMixesCardState extends State<YourTopMixesCard> {
+class _YourTopMixScaledState extends State<YourTopMixScaled> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,12 +18,11 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
         Column(
           children: [
             SizedBox(
-              width: 160,
-              height: 160,
+              width: 100,
+              height: 100,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  // color: Colors.blueAccent,
                   image: DecorationImage(
                     image: AssetImage(widget.cardImage),
                     fit: BoxFit.fill,
@@ -47,8 +36,8 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                       padding: const EdgeInsets.only(top: 5.0, left: 5),
                       child: SvgPicture.asset(
                         'assets/icons/spotify-dark.svg',
-                        width: 20,
-                        height: 20,
+                        width: 12,
+                        height: 12,
                         colorFilter: ColorFilter.mode(
                           widget.themeColor,
                           BlendMode.srcIn,
@@ -63,7 +52,7 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                           Expanded(
                             flex: 5,
                             child: Container(
-                              height: 20,
+                              height: 12,
                               decoration: BoxDecoration(
                                 color: widget.themeColor,
                               ),
@@ -75,17 +64,11 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                             child: Container(
                               padding: EdgeInsets.only(left: 5),
                               alignment: Alignment.centerLeft,
-                              height: 20,
+                              height: 12,
                               decoration: BoxDecoration(
                                 color: widget.themeColor,
                               ),
-                              child: Text(
-                                widget.cardName,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              child: Text(widget.cardName,style: TextStyle(color: Colors.white,fontSize: 9),),
                             ),
                           ),
                         ],
@@ -98,37 +81,7 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
           ],
         ),
         SizedBox(height: 10),
-        SizedBox(
-          width: 160,
-          child: Text(
-            widget.cardTitle,
-            maxLines: 2,
-            style: TextStyle(
-              color: Colors.white,
-              overflow: TextOverflow.ellipsis,
-              fontSize: 14,
-              fontWeight: FontWeight.w200,
-            ),
-          ),
-        ),
       ],
     );
   }
 }
-
-class YourTopMixesCardData {
-  final List<String> cardTitleList;
-  final String cardName;
-  final String cardImage;
-  final Color cardTheme;
-
-  YourTopMixesCardData({
-    required this.cardTitleList,
-    required this.cardName,
-    required this.cardImage,
-    required this.cardTheme,
-  });
-}
-
-
-

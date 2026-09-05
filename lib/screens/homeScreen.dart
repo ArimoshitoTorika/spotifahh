@@ -174,6 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   MadeForYouCard(),
+                  SizedBox(height: 50,)
                 ],
               ),
             ),

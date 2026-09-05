@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spotifahh/widgets/homeScreen/scaledWidget/recommendedStationScaled.dart';
+import 'package:spotifahh/widgets/homeScreen/scaledWidget/yourTopMixScalled.dart';
+import 'package:spotifahh/widgets/homeScreen/yourTopMixesCard.dart';
 
 import '../../data/appData.dart';
 class MadeForYouCard extends StatefulWidget {
@@ -27,10 +30,8 @@ class _MadeForYouCardState extends State<MadeForYouCard> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/images/MusicAlbumCovers/3.jpeg',
-                  width: 100,
-                ),
+                child: RecoomendedStationScaled(cardTitle: 'dfdf', leftAlbum: 'assets/images/MusicAlbumCovers/5.jpeg', centerAlbum: 'assets/images/MusicAlbumCovers/5.jpeg', rightAlbum: 'assets/images/MusicAlbumCovers/5.jpeg', cardBgColor: Colors.redAccent),
+                // child: YourTopMixScaled(cardImage: 'assets/images/MusicAlbumCovers/5.jpeg', themeColor: Colors.orange,cardName: 'Sun owa beach',)
               ),
               Expanded(
                 child: Container(
@@ -109,10 +110,10 @@ class _MadeForYouCardState extends State<MadeForYouCard> {
                   child: Row(
                     spacing: 6,
                     children: [
-                      isMuted? Icon(Icons.volume_off, color: Colors.white,size: 20,): Icon(Icons.volume_up, color: Colors.white,size: 20,),
+                      isMuted? Icon(Icons.volume_off, color: Colors.grey,size: 20,): Icon(Icons.volume_up, color: Colors.white,size: 20,),
                       Text(
                         'Preview Playlist',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: isMuted? Colors.grey:Colors.white),
                       ),
                     ],
                   ),
