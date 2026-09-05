@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotifahh/data/appData.dart';
 import 'package:spotifahh/style/myColor.dart';
 import 'package:spotifahh/style/textStyle.dart';
+import 'package:spotifahh/widgets/homeScreen/madeForYou.dart';
 import 'package:spotifahh/widgets/homeScreen/recentPlaylist.dart';
 import 'package:spotifahh/widgets/homeScreen/remmendedStationCard.dart';
 import 'package:spotifahh/widgets/homeScreen/tabs.dart';
@@ -161,6 +163,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 10,
+                    ),
+                    child: Text(
+                      'Made For You',
+                      style: MyTextStyleLib.contentTitle,
+                    ),
+                  ),
+                  MadeForYouCard(),
                 ],
               ),
             ),

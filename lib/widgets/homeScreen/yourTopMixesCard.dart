@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotifahh/gen/assets.gen.dart';
 
 class YourTopMixesCard extends StatefulWidget {
   final String cardName;
@@ -45,8 +46,9 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0, left: 5),
                       child: SvgPicture.asset(
-                        'assets/icons/spotify.svg',
-                        width: 16,
+                        'assets/icons/spotify-dark.svg',
+                        width: 20,
+                        height: 20,
                         colorFilter: ColorFilter.mode(
                           widget.themeColor,
                           BlendMode.srcIn,
@@ -86,6 +88,7 @@ class _YourTopMixesCardState extends State<YourTopMixesCard> {
                               ),
                             ),
                           ),
+
                         ],
                       ),
                     ),

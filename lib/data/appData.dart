@@ -3,6 +3,21 @@ import 'package:spotifahh/widgets/homeScreen/yourTopMixesCard.dart';
 
 import '../widgets/homeScreen/recentPlaylist.dart';
 import '../widgets/homeScreen/remmendedStationCard.dart';
+import 'dart:math';
+
+final List<Color> colorList = [
+  Colors.redAccent,
+  Colors.blueAccent,
+  Colors.greenAccent,
+  Colors.orangeAccent,
+  Colors.pinkAccent,
+  Colors.purpleAccent,
+  Colors.blue,
+  Colors.green,
+  Colors.blueGrey,
+];
+
+final Color randomColor = colorList[Random().nextInt(colorList.length)];
 
 class AppData {
   static List<RecentPlaylist> recentPlaylistList = [
@@ -112,7 +127,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/7.jpeg',
-      cardTheme: Colors.purpleAccent,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -123,7 +138,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/6.jpeg',
-      cardTheme: Colors.grey,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -134,7 +149,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/5.jpeg',
-      cardTheme: Colors.green,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -145,7 +160,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/4.jpeg',
-      cardTheme: Colors.redAccent,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -156,7 +171,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/3.jpeg',
-      cardTheme: Colors.greenAccent,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -167,7 +182,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/2.jpeg',
-      cardTheme: Colors.orangeAccent,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -178,7 +193,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/1.jpeg',
-      cardTheme: Colors.blueAccent,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),YourTopMixesCardData(
       cardTitleList: [
         'The Maria',
@@ -189,7 +204,7 @@ class AppData {
       ],
       cardName: 'Art Pop Mix',
       cardImage: 'assets/images/MusicAlbumCovers/8.jpeg',
-      cardTheme: Colors.yellowAccent,
+      cardTheme: colorList[Random().nextInt(colorList.length)],
     ),
   ];
 }
