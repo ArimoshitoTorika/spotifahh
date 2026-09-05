@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spotifahh/widgets/homeScreen/scaledWidget/recommendedStationScaled.dart';
 import 'package:spotifahh/widgets/homeScreen/scaledWidget/yourTopMixScalled.dart';
 import 'package:spotifahh/widgets/homeScreen/yourTopMixesCard.dart';
-
+import 'package:spotifahh/data/appData.dart';
 import '../../data/appData.dart';
 class MadeForYouCard extends StatefulWidget {
   const MadeForYouCard({super.key});
@@ -20,7 +20,7 @@ class _MadeForYouCardState extends State<MadeForYouCard> {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.orangeAccent,
+        color: randomColor,
       ),
       child: Column(
         children: [
